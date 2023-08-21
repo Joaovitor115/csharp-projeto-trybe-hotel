@@ -4,4 +4,5 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 public class Booking {
 
+
 }
