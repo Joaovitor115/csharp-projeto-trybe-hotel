@@ -11,19 +11,58 @@ namespace TrybeHotel.Repository
             _context = context;
         }
 
-        // 7. Refatore o endpoint GET /room
         public IEnumerable<RoomDto> GetRooms(int HotelId)
         {
-           throw new NotImplementedException();
+            return _context.Rooms.Where(r => r.HotelId == HotelId).Select(r => new RoomDto
+            {
+                RoomId = r.RoomId,
+                Name = r.Name,
+                Capacity = r.Capacity,
+                Image = r.Image,
+                Hotel = new HotelDto
+                {
+                    HotelId = r.Hotel!.HotelId,
+                    Name = r.Hotel.Name,
+                    Address = r.Hotel.Address,
+                    CityId = r.Hotel.CityId,
+                    CityName = r.Hotel.City!.Name,
+                }
+            }).ToList();
         }
 
-        // 8. Refatore o endpoint POST /room
-        public RoomDto AddRoom(Room room) {
-            throw new NotImplementedException();
+        public RoomDto AddRoom(Room room)
+        {
+            _context.Rooms.Add(room);
+            _context.SaveChanges();
+            var rooms = _context.Rooms;
+            var savedRoom = from r in rooms
+                            where r.RoomId == room.RoomId
+                            select new RoomDto
+                            {
+                                RoomId = r.RoomId,
+                                Name = r.Name,
+                                Capacity = r.Capacity,
+                                Image = r.Image,
+                                Hotel = new HotelDto
+                                {
+                                    HotelId = r.Hotel!.HotelId,
+                                    Name = r.Hotel.Name,
+                                    Address = r.Hotel.Address,
+                                    CityId = r.Hotel.CityId,
+                                    CityName = r.Hotel.City!.Name,
+                                }
+                            };
+            return savedRoom.First();
         }
 
-        public void DeleteRoom(int RoomId) {
-           throw new NotImplementedException();
+        public void DeleteRoom(int RoomId)
+        {
+            var foundRoom = _context.Rooms.Find(RoomId);
+            if (foundRoom != null)
+            {
+                _context.Rooms.Remove(foundRoom);
+                _context.SaveChanges();
+            }
         }
     }
 }
