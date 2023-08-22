@@ -29,6 +29,7 @@ namespace TrybeHotel.Repository
             _context.Hotels.Add(hotel);
             _context.SaveChanges();
             var hotels = _context.Hotels;
+             var city = _context.Cities.FirstOrDefault(c => c.CityId == hotel.CityId);
             var actualHotel = from h in hotels
                               where h.Name == hotel.Name
                               select new HotelDto
@@ -37,8 +38,8 @@ namespace TrybeHotel.Repository
                                   Name = h.Name,
                                   Address = h.Address,
                                   CityId = h.CityId,
-                                  CityName = h.City!.Name,
-                                  State = h.City!.State,
+                                  CityName = city != null ? city.Name : "",
+                                  State = city != null ? city.State : "",
 
                               };
             return actualHotel.First();

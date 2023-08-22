@@ -15,6 +15,6 @@ namespace TrybeHotel.Dto
         public DateTime? CheckIn { get; set; }
         public DateTime? CheckOut { get; set; }
         public int? GuestQuant { get; set; }
-        public Room? Room { get; set; }
+        public RoomDto? Room { get; set; }
     }
 }
