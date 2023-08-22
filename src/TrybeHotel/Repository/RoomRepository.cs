@@ -26,6 +26,8 @@ namespace TrybeHotel.Repository
                     Address = r.Hotel.Address,
                     CityId = r.Hotel.CityId,
                     CityName = r.Hotel.City!.Name,
+                    State = r.Hotel.City!.State,
+
                 }
             }).ToList();
         }
@@ -50,6 +52,8 @@ namespace TrybeHotel.Repository
                                     Address = r.Hotel.Address,
                                     CityId = r.Hotel.CityId,
                                     CityName = r.Hotel.City!.Name,
+                                    State = r.Hotel.City!.State,
+
                                 }
                             };
             return savedRoom.First();
