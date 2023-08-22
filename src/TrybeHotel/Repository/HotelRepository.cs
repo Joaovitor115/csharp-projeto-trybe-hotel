@@ -13,31 +13,34 @@ namespace TrybeHotel.Repository
 
         public IEnumerable<HotelDto> GetHotels()
         {
-             return _context.Hotels.Select(h => new HotelDto
+            return _context.Hotels.Select(h => new HotelDto
             {
                 HotelId = h.HotelId,
                 Name = h.Name,
                 Address = h.Address,
                 CityId = h.CityId,
                 CityName = h.City!.Name,
+                State = h.City!.State,
             }).ToList();
         }
-        
+
         public HotelDto AddHotel(Hotel hotel)
         {
             _context.Hotels.Add(hotel);
             _context.SaveChanges();
             var hotels = _context.Hotels;
             var actualHotel = from h in hotels
-                            where h.Name == hotel.Name
-                            select new HotelDto
-                            {
-                                HotelId = h.HotelId,
-                                Name = h.Name,
-                                Address = h.Address,
-                                CityId = h.CityId,
-                                CityName = h.City!.Name,
-                            };
+                              where h.Name == hotel.Name
+                              select new HotelDto
+                              {
+                                  HotelId = h.HotelId,
+                                  Name = h.Name,
+                                  Address = h.Address,
+                                  CityId = h.CityId,
+                                  CityName = h.City!.Name,
+                                  State = h.City!.State,
+
+                              };
             return actualHotel.First();
         }
     }

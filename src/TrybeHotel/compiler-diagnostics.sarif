@@ -28,27 +28,6 @@
           }
         },
         {
-          "ruleId": "CS8618",
-          "level": "warning",
-          "message": "O propriedade não anulável 'Secret' precisa conter um valor não nulo ao sair do construtor. Considere declarar o propriedade como anulável.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///home/joaovitor/Documentos/projects/csharp-026-csharp-projeto-trybe-hotel-fase-c/src/TrybeHotel/Services/TokenOptions.cs",
-                "region": {
-                  "startLine": 6,
-                  "startColumn": 23,
-                  "endLine": 6,
-                  "endColumn": 29
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
           "ruleId": "CS1998",
           "level": "warning",
           "message": "Este método assíncrono não possui operadores 'await' e será executado de modo síncrono. É recomendável o uso do operador 'await' para aguardar chamadas à API desbloqueadas ou do operador 'await Task.Run(...)' para realizar um trabalho associado à CPU em um thread em segundo plano.",
@@ -103,6 +82,27 @@
                   "startColumn": 54,
                   "endLine": 28,
                   "endColumn": 68
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8618",
+          "level": "warning",
+          "message": "O propriedade não anulável 'Secret' precisa conter um valor não nulo ao sair do construtor. Considere declarar o propriedade como anulável.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/joaovitor/Documentos/projects/csharp-026-csharp-projeto-trybe-hotel-fase-c/src/TrybeHotel/Services/TokenOptions.cs",
+                "region": {
+                  "startLine": 6,
+                  "startColumn": 23,
+                  "endLine": 6,
+                  "endColumn": 29
                 }
               }
             }
