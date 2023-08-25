@@ -63,7 +63,7 @@ namespace TrybeHotel.Repository
             {
                 return null!;
             }
-            var city = _context.Cities.Find(booking.Room.Hotel.CityId);
+            var city = _context.Cities.Find(booking.Room!.Hotel!.CityId);
             return new BookingResponse
             {
                 BookingId = booking.BookingId,
